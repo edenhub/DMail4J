@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="dmail-webclient:war exploded">
+    <output-path>$PROJECT_DIR$/dmail-webclient/target/dmail-webclient</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="dmail-webclient" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="dmail-webclient/web/Web" />
+    </root>
+  </artifact>
+</component>
