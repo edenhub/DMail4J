@@ -13,10 +13,11 @@
     <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="css/pagecontext.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.useso.com/css?family=Tangerine">
-    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-treeview.js"></script>
 </head>
 
 <body>
@@ -51,6 +52,82 @@
         </form>
     </div>
 </nav>
+<br/><br/><br/>
 <!--邮箱导航栏结束-->
+<!--邮箱主体-->
+<div class="container-fluid">
+    <!--tab栏开始-->
+    <ul class="nav nav-tabs" id="mainTab">
+        <li class="active"><a href="#home">首页</a></li>
+        <li><a href="#contacts">通讯录</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="home">
+            <div class="col-lg-2">
+                <div id="tree"></div>
+                <script>
+                    function getTree() {
+                        var tree = [
+                            {
+                                text: "收信箱",
+                                icon:"glyphicon glyphicon-envelope",
+                                href: ""
+                            },
+                            {
+                                text: "已发送",
+                                icon: "glyphicon glyphicon-share-alt"
+                            },
+                            {
+                                text: "已删除",
+                                icon: "glyphicon glyphicon-trash"
+                            },
+                            {
+                                text: "垃圾邮件",
+                                icon: "glyphicon glyphicon-refresh"
+                            },
+                            {
+                                text: "自定义文件夹",
+                                icon: "glyphicon glyphicon-tags",
+                                nodes: [
+                                    {
+                                        text: "SYSU",
+                                        icon: "glyphicon glyphicon-tag"
+                                    }
+                                ]
+                            }
+                        ];
+                        return tree;
+                    }
+
+                    $('#tree').treeview({data: getTree()});
+                </script>
+            </div>
+            <div class="col-lg-10">
+                content
+            </div>
+        </div>
+        <div class="tab-pane" id="contacts">通讯录</div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#mainTab a:first').tab('show');//初始化显示哪个tab
+
+            $('#mainTab a').click(function (e) {
+                e.preventDefault();//阻止a链接的跳转行为
+                $(this).tab('show');//显示当前选中的链接及关联的content
+            })
+        })
+    </script>
+    <!--Tab栏结束-->
+</div>
+<!--邮箱主体结束-->
+<!--&lt;!&ndash;版权&ndash;&gt;-->
+<!--<div class="footer">-->
+    <!--<hr>-->
+    <!--<p class="copyright">&copy; <a href="mailto:adamchen.pub@gmail.com">adamchen.pub@gmail.com </a>2014 </p>-->
+<!--</div>-->
+<!--&lt;!&ndash;版权结束&ndash;&gt;-->
 </body>
 </html>
