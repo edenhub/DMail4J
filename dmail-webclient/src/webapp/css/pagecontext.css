@@ -1,9 +1,11 @@
 .font-style{
     font-family: 'Tangerine'serif;
+    text-shadow: 4px 4px 4px #aaa;
 }
 .font-logo{
     font-family: 'Tangerine'serif;
     font-size: 30px;
+    text-shadow: 4px 4px 4px #aaa;
 }
 
 .footer hr{

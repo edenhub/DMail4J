@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head lang="zh-cn">
+    <title>欢迎来到DMail</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>欢迎来到DMail</title>
 
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/pagecontext.css">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
     <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <!--<script src="js/jquery-1.11.1.min.js"></script>-->
-    <!--<link rel="stylesheet" href="css/bootstrap.min.css"/>-->
-    <!--<script src="js/bootstrap.min.js"></script>-->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>-->
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="css/pagecontext.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.useso.com/css?family=Tangerine">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 <!--首页导航栏开始-->
@@ -34,6 +35,13 @@
                 <!--<img src="imgs/logo.jpg" width="20%" height="100%"/>-->
             </a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user" data-toggle="tooltip" data-placement="bottom"
+                                  title="Adam"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-off" data-toggle="tooltip" data-placement="bottom"
+                                  title="注销"></span></a></li>
+            <li></li>
+        </ul>
     </div>
 </nav>
 <br/><br/><br/>
@@ -95,7 +103,7 @@
     <!--版权-->
     <div class="footer">
         <hr>
-        <p class="copyright">&copy; <a href="mailto:adam.pub@gmail.com">adam.pub@gmail.com </a>2014 </p>
+        <p class="copyright">&copy; <a href="mailto:adamchen.pub@gmail.com">adamchen.pub@gmail.com </a>2014 </p>
     </div>
     <!--版权结束-->
     <!--注册框开始-->
@@ -108,10 +116,13 @@
                         <h2 class="modal-title" id="signUpModalLabel" style="text-align: center">欢迎新用户</h2>
                     </div>
                     <div class="modal-body">
-                        <input type="text" class="form-control" placeholder="用户名" required ><br/>
-                        <input type="password" class="form-control" placeholder="密码" required><br/>
-                        <input type="password" class="form-control" placeholder="密码确认" required><br/>
-                        <input type="email" class="form-control" placeholder="邮箱" required autofocus> <br/>
+                        <p class="text-danger hidden">注册失败</p>
+                        <input type="text" class="form-control" placeholder="用户名" required><br/>
+                        <input type="password" class="form-control" placeholder="密码" required data-toggle="tooltip"
+                               data-placement="bottom" title="6-12位，不包含特殊字符"><br/>
+                        <input type="password" class="form-control" placeholder="密码确认" required data-toggle="tooltip"
+                               data-placement="bottom" title="6-12位，不包含特殊字符"><br/>
+                        <!--<input type="email" class="form-control" placeholder="邮箱" required autofocus> <br/>-->
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" value="login">登陆
@@ -138,6 +149,7 @@
                         <h2 class="modal-title" id="loginModalLabel" style="text-align: center">登陆</h2>
                     </div>
                     <div class="modal-body">
+                        <p class="text-danger hidden">登录失败</p>
                         <input type="email" class="form-control" placeholder="邮箱" required autofocus>
                         <br/>
                         <input type="password" class="form-control" placeholder="密码" required>
