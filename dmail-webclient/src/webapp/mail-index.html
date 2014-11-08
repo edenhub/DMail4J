@@ -79,14 +79,6 @@
                                 icon: "glyphicon glyphicon-share-alt"
                             },
                             {
-                                text: "已删除",
-                                icon: "glyphicon glyphicon-trash"
-                            },
-                            {
-                                text: "垃圾邮件",
-                                icon: "glyphicon glyphicon-refresh"
-                            },
-                            {
                                 text: "自定义文件夹",
                                 icon: "glyphicon glyphicon-tags",
                                 nodes: [
@@ -95,12 +87,24 @@
                                         icon: "glyphicon glyphicon-tag"
                                     }
                                 ]
+                            },
+                            {
+                                text: "已删除",
+                                icon: "glyphicon glyphicon-trash"
+                            },
+                            {
+                                text: "垃圾邮件",
+                                icon: "glyphicon glyphicon-refresh"
                             }
+
                         ];
                         return tree;
                     }
 
                     $('#tree').treeview({data: getTree()});
+                    $('$tree').on('nodeSelected',function(event,node){
+                        alert("select");
+                    });
                 </script>
             </div>
             <div class="col-lg-10">
