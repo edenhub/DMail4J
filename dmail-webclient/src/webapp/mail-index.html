@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="zh-cn">
-    <title>DMail</title>
+    <title>YMail</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-treeview.js"></script>
+    <script src="js/bootstrap-contextmenu.js"></script>
+    <script src="js/mailpage.js"></script>
 </head>
 
 <body>
@@ -33,7 +35,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <font class="font-logo">DMail</font>
+                <font class="font-logo">YMail</font>
                 <!--<img src="imgs/logo.jpg" width="20%" height="100%"/>-->
             </a>
         </div>
@@ -61,18 +63,37 @@
         <li class="active"><a href="#home">首页</a></li>
         <li><a href="#contacts">通讯录</a></li>
     </ul>
-
+    <!--右键菜单栏-->
+    <div id="context-menu-parent">
+        <ul class="dropdown-menu" role="menu">
+            <li><a tabindex="-1" href="#" onclick="createFold()">新建文件夹</a></li>
+        </ul>
+    </div>
+    <div id="context-menu-child">
+        <ul class="dropdown-menu" role="menu">
+            <li><a tabindex="-1" href="#" onclick="renameFold()">重命名</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a tabindex="-1" href="#" onclick="deleteFold()">删除</a></li>
+        </ul>
+    </div>
+    <!--右键菜单栏结束-->
     <div class="tab-content">
         <div class="tab-pane active" id="home">
             <div class="col-lg-2">
-                <div id="tree"></div>
+                <!--<div class="btn btn-primary btn-lg btn-block">写信</div>-->
+                <div id="tree" class=".context"></div>
                 <script>
                     function getTree() {
                         var tree = [
                             {
+                                text: '写信',
+                                icon: 'glyphicon glyphicon-pencil'
+                            },
+                            {
                                 text: "收信箱",
-                                icon:"glyphicon glyphicon-envelope",
-                                href: ""
+                                icon: "glyphicon glyphicon-envelope",
+                                href: "1",
+                                badge: 3
                             },
                             {
                                 text: "已发送",
@@ -81,10 +102,12 @@
                             {
                                 text: "自定义文件夹",
                                 icon: "glyphicon glyphicon-tags",
+                                isPrivateParent: true,
                                 nodes: [
                                     {
                                         text: "SYSU",
-                                        icon: "glyphicon glyphicon-tag"
+                                        icon: "glyphicon glyphicon-tag",
+                                        isPrivateChild: true
                                     }
                                 ]
                             },
@@ -102,8 +125,18 @@
                     }
 
                     $('#tree').treeview({data: getTree()});
-                    $('$tree').on('nodeSelected',function(event,node){
-                        alert("select");
+                    $('#tree').on('nodeSelected', function (event, node) {
+                        alert("左键选中");
+                    });
+                    $('#tree').bind('contextmenu', function (e) {
+                        var oItem = $(e.target);
+                        if (oItem.attr('isPrivateParent')) {
+                            oItem.attr('data-toggle', 'context');
+                            oItem.attr('data-target', '#context-menu-parent');
+                        } else if (oItem.attr('isPrivateChild')) {
+                            oItem.attr('data-toggle', 'context');
+                            oItem.attr('data-target', '#context-menu-child');
+                        }
                     });
                 </script>
             </div>
@@ -125,12 +158,83 @@
         })
     </script>
     <!--Tab栏结束-->
+    <!--新建文件夹-->
+    <!-- Modal -->
+    <div class="modal fade" id="createFoldModal" tabindex="-1" role="dialog" aria-labelledby="createFoldModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form class="form-signin " role="form">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="createFoldnModalLabel" style="text-align: center">新建文件夹</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger hidden">操作失败</p>
+                        <input type="text" class="form-control" placeholder="文件名" required autofocus>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--新建文件夹-->
+    <!--重命名文件夹-->
+    <!-- Modal -->
+    <div class="modal fade" id="renameFoldModal" tabindex="-1" role="dialog" aria-labelledby="renameFoldModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form class="form-signin " role="form">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="renameFoldnModalLabel" style="text-align: center">重命名文件夹</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger hidden">操作失败</p>
+                        <input type="text" class="form-control" placeholder="文件名" required autofocus>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--重命名文件夹-->
+    <!--删除文件夹-->
+    <!-- Modal -->
+    <div class="modal fade" id="deleteFoldModal" tabindex="-1" role="dialog" aria-labelledby="deleteFoldModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form class="form-signin " role="form">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="deleteFoldnModalLabel" style="text-align: center">删除文件夹</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-danger hidden">操作失败</p>
+                    </div>
+                   <div>
+                       <p><span class="glyphicon glyphicon-remove-sign"></span> 将会删除文件夹下的所有邮件</p>
+                   </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--s删除文件夹-->
 </div>
 <!--邮箱主体结束-->
 <!--&lt;!&ndash;版权&ndash;&gt;-->
 <!--<div class="footer">-->
-    <!--<hr>-->
-    <!--<p class="copyright">&copy; <a href="mailto:adamchen.pub@gmail.com">adamchen.pub@gmail.com </a>2014 </p>-->
+<!--<hr>-->
+<!--<p class="copyright">&copy; <a href="mailto:adamchen.pub@gmail.com">adamchen.pub@gmail.com </a>2014 </p>-->
 <!--</div>-->
 <!--&lt;!&ndash;版权结束&ndash;&gt;-->
 </body>

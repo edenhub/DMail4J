@@ -62,6 +62,10 @@
 		showBorder: true,
 		showTags: false,
 
+		//自定义鼠标右键
+		isPrivateParent:false,
+		isPrivateChild:false,
+
 		// Event handler for when a node is selected
 		onNodeSelected: undefined
 	};
@@ -118,12 +122,22 @@
 			this._unsubscribeEvents();
 
 			this.$element.on('click', $.proxy(this._clickHandler, this));
+			//自定义鼠标右键
+			this.$element.bind('contextmenu', $.proxy(this._contextmenu,this));
 
 			if (typeof (this.options.onNodeSelected) === 'function') {
 				this.$element.on('nodeSelected', this.options.onNodeSelected);
 			}
 		},
 
+		//自定义鼠标右键操作
+		_contextmenu:function(event){
+			var target = $(event.target);
+			var node = this._findNode(target);
+			//alert("in : "+node.isPrivateParent);
+			//alert("in : "+node.isPrivateChild);
+		},
+		//自定义鼠标右键结束
 		_clickHandler: function(event) {
 
 			if (!this.options.enableLinks) { event.preventDefault(); }
@@ -268,7 +282,9 @@
 					.addClass('node-' + self._elementId)
 					.addClass((node === self.selectedNode) ? 'node-selected' : '')
 					.attr('data-nodeid', node.nodeId)
-					.attr('style', self._buildStyleOverride(node));
+					.attr('style', self._buildStyleOverride(node))
+					.attr('isPrivateChild',node.isPrivateChild)
+					.attr('isPrivateParent',node.isPrivateParent); //自定义鼠标右键
 
 				// Add indent/spacer to mimic tree structure
 				for (var i = 0; i < (level - 1); i++) {
