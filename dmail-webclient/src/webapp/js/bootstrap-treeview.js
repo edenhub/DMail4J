@@ -65,6 +65,7 @@
 		//自定义鼠标右键
 		isPrivateParent:false,
 		isPrivateChild:false,
+		priId:0,
 
 		// Event handler for when a node is selected
 		onNodeSelected: undefined
@@ -284,7 +285,8 @@
 					.attr('data-nodeid', node.nodeId)
 					.attr('style', self._buildStyleOverride(node))
 					.attr('isPrivateChild',node.isPrivateChild)
-					.attr('isPrivateParent',node.isPrivateParent); //自定义鼠标右键
+					.attr('isPrivateParent',node.isPrivateParent) //自定义鼠标右键
+					.attr('priId',node.priId);
 
 				// Add indent/spacer to mimic tree structure
 				for (var i = 0; i < (level - 1); i++) {

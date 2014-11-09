@@ -83,48 +83,20 @@
                 <!--<div class="btn btn-primary btn-lg btn-block">写信</div>-->
                 <div id="tree" class=".context"></div>
                 <script>
-                    function getTree() {
-                        var tree = [
-                            {
-                                text: '写信',
-                                icon: 'glyphicon glyphicon-pencil'
-                            },
-                            {
-                                text: "收信箱",
-                                icon: "glyphicon glyphicon-envelope",
-                                href: "1",
-                                badge: 3
-                            },
-                            {
-                                text: "已发送",
-                                icon: "glyphicon glyphicon-share-alt"
-                            },
-                            {
-                                text: "自定义文件夹",
-                                icon: "glyphicon glyphicon-tags",
-                                isPrivateParent: true,
-                                nodes: [
-                                    {
-                                        text: "SYSU",
-                                        icon: "glyphicon glyphicon-tag",
-                                        isPrivateChild: true
-                                    }
-                                ]
-                            },
-                            {
-                                text: "已删除",
-                                icon: "glyphicon glyphicon-trash"
-                            },
-                            {
-                                text: "垃圾邮件",
-                                icon: "glyphicon glyphicon-refresh"
-                            }
+                    var treeNode = [
+                        {
+                            text: "SYSU",
+//                            icon: "glyphicon glyphicon-tag",
+//                            isPrivateChild: true,
+                            priId : 2
+                        },
+                        {
+                            text:'Next',
+                            priId : 3
+                        }
+                    ];
 
-                        ];
-                        return tree;
-                    }
-
-                    $('#tree').treeview({data: getTree()});
+                    $('#tree').treeview({data: buildTreeData(treeNode)});
                     $('#tree').on('nodeSelected', function (event, node) {
                         alert("左键选中");
                     });
@@ -134,6 +106,7 @@
                             oItem.attr('data-toggle', 'context');
                             oItem.attr('data-target', '#context-menu-parent');
                         } else if (oItem.attr('isPrivateChild')) {
+                            alert(oItem.attr('priId'));
                             oItem.attr('data-toggle', 'context');
                             oItem.attr('data-target', '#context-menu-child');
                         }
