@@ -3,17 +3,32 @@
  */
 
 function createFold(event) {
-    //alert('create Fold');
-    $('#createFoldModal').modal({});
+    $('#createFoldModal').modal();
+}
+
+function doCreate(event){
+    newName = $('#createFoldModal #createFold_newName').val();
+    alert(newName)
+    alert('ajax远程调用')
 }
 
 function renameFold(event) {
+
     $('#renameFoldModal').modal();
 }
 
+function doRename(event){
+    newName = $('#renameFoldModal #renameFold_newName').val();
+    alert(newName);
+    alert('ajax远程调用');
+}
+
 function deleteFold(event) {
-    //alert('delete Fold');
     $('#deleteFoldModal').modal();
+}
+
+function doDelete(event){
+    alert('ajax远程调用');
 }
 
 function wrapChildNode(childList){
@@ -24,6 +39,17 @@ function wrapChildNode(childList){
     }
 
     return childList;
+}
+
+function getEmptyChildNode(strText,strId){
+    var node = {
+        text: strText,
+        icon: "glyphicon glyphicon-tag",
+        isPrivateChild: true,
+        priId: strId
+    };
+
+    return node;
 }
 
 function buildTreeData(childList) {
@@ -58,9 +84,17 @@ function buildTreeData(childList) {
         }
     ];
 
-    var newNodes = wrapChildNode(childList);
+    //len = childList.length;
+    //var tns = [len];
+    //
+    //
+    //for(i=0;i<len;i++){
+    //    node = getEmptyChildNode(childList[i].text,childList[i].priId);
+    //    tns.push(node);
+    //}
 
-
-    defautlTree[3].nodes = newNodes;
+    //alert("length : "+childList.length);
+    defautlTree[3].nodes = childList;
+    //defautlTree[3].nodes = tns;
     return defautlTree;
 }

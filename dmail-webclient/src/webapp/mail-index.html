@@ -66,7 +66,7 @@
     <!--右键菜单栏-->
     <div id="context-menu-parent">
         <ul class="dropdown-menu" role="menu">
-            <li><a tabindex="-1" href="#" onclick="createFold()">新建文件夹</a></li>
+            <li><a tabindex="-1" href="" onclick="createFold()">新建文件夹</a></li>
         </ul>
     </div>
     <div id="context-menu-child">
@@ -83,22 +83,44 @@
                 <!--<div class="btn btn-primary btn-lg btn-block">写信</div>-->
                 <div id="tree" class=".context"></div>
                 <script>
+
                     var treeNode = [
                         {
                             text: "SYSU",
-//                            icon: "glyphicon glyphicon-tag",
-//                            isPrivateChild: true,
-                            priId : 2
+                            icon: "glyphicon glyphicon-tag",
+                            isPrivateChild: true,
+                            priId : 1
                         },
                         {
                             text:'Next',
-                            priId : 3
+                            icon: "glyphicon glyphicon-tag",
+                            isPrivateChild: true,
+                            priId : 2
                         }
                     ];
 
                     $('#tree').treeview({data: buildTreeData(treeNode)});
+                    $.ajax({
+                        url:'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/mailContents.html',
+                        cache:false,
+                        success:function(html){
+                            $('#mails_contents').html(html);
+                        },
+                        error:function(){
+                            alert('error')
+                        }
+                    });
                     $('#tree').on('nodeSelected', function (event, node) {
-                        alert("左键选中");
+                        $.ajax({
+                            url:'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/mailContents.html',
+                            cache:false,
+                            success:function(html){
+                                $('#mails_contents').html(html);
+                            },
+                            error:function(){
+                                alert('error')
+                            }
+                        });
                     });
                     $('#tree').bind('contextmenu', function (e) {
                         var oItem = $(e.target);
@@ -106,15 +128,17 @@
                             oItem.attr('data-toggle', 'context');
                             oItem.attr('data-target', '#context-menu-parent');
                         } else if (oItem.attr('isPrivateChild')) {
-                            alert(oItem.attr('priId'));
+//                            alert(oItem.attr('priId'));
+//                           var oInput =  $('#context-menu-child ul li:nth-child(1)');
+//                            oInput.on('click',{priId : oItem.attr('priId')},renameFold(e));
                             oItem.attr('data-toggle', 'context');
                             oItem.attr('data-target', '#context-menu-child');
                         }
                     });
                 </script>
             </div>
-            <div class="col-lg-10">
-                content
+            <div id="mails_contents" class="col-lg-10">
+                <!--content-->
             </div>
         </div>
         <div class="tab-pane" id="contacts">通讯录</div>
@@ -143,11 +167,11 @@
                     </div>
                     <div class="modal-body">
                         <p class="text-danger hidden">操作失败</p>
-                        <input type="text" class="form-control" placeholder="文件名" required autofocus>
+                        <input id="createFold_newName" type="text" class="form-control" placeholder="文件名" required autofocus>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary">确定</button>
+                        <button type="submit" class="btn btn-primary" onclick="doCreate()">确定</button>
                     </div>
                 </form>
             </div>
@@ -166,11 +190,11 @@
                     </div>
                     <div class="modal-body">
                         <p class="text-danger hidden">操作失败</p>
-                        <input type="text" class="form-control" placeholder="文件名" required autofocus>
+                        <input id="renameFold_newName" type="text" class="form-control" placeholder="文件名" required autofocus>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary">确定</button>
+                        <button type="submit" class="btn btn-primary" onclick="doRename()">确定</button>
                     </div>
                 </form>
             </div>
@@ -195,7 +219,7 @@
                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary">确定</button>
+                        <button type="submit" class="btn btn-primary" onclick="doDelete()">确定</button>
                     </div>
                 </form>
             </div>
