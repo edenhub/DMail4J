@@ -13,7 +13,7 @@
 <body class="container">
 <div>
     <form class="form-group">
-        <span>&nbsp;&nbsp;</span><input type="checkbox">
+        <span>&nbsp;&nbsp;</span><input type="checkbox" id="allCheck">
         <span>&nbsp;&nbsp;</span><button type="button" class="btn btn-default">删除</button>
         <span>&nbsp;&nbsp;</span><button type="button" class="btn btn-default">刷新</button>
         <span>&nbsp;&nbsp;</span>
@@ -30,136 +30,143 @@
             </ul>
         </div>
         <script>
+            function checkAll(listId){
+                $(listId).attr('checked','true');
+            }
+            function unCheckAll(listId){
+                $(listId).removeAttr('checked');
+            }
+
             $('.dropdown-toggle').on('click',function(e){
                 $('.dropdown-toggle').dropdown();
             });
         </script>
     </form>
 </div>
-<table class="table table-hover mailContents">
-    <tr>
+<table id="inBoxMailLists" class="table table-hover mailContents">
+    <tr id="1">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="2">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="3">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="4">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="5">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="6">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="7">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="8">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="9">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="10">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="11">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="12">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="13">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="14">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="15">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
         <td>11月5号</td>
     </tr>
-    <tr>
+    <tr id="16">
         <td class="select">
-            <input type="checkbox">
+            <input name="del_mail" type="checkbox">
         </td>
         <td class="sender">Adam</td>
         <td class="title">您的京东订单【5498950836】已确认收到，欢迎您随时关注订单状态！</td>
