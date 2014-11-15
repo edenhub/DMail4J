@@ -80,7 +80,7 @@ function buildTreeData(childList) {
         },
         {
             text: "垃圾邮件",
-            icon: "glyphicon glyphicon-refresh"
+            icon: "glyphicon glyphicon-ban-circle"
         }
     ];
 

@@ -17,3 +17,14 @@
     text-align: center;
     margin-bottom: 35px;
 }
+
+table .select{
+    /*background-color: red;*/
+    width: 5%;
+}
+table .sender{
+    width: 10%;
+}
+table .title{
+    width: 78%;
+}
