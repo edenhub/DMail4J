@@ -62,6 +62,8 @@
 		showBorder: true,
 		showTags: false,
 
+		//判断鼠标左键
+		tagId:0,
 		//自定义鼠标右键
 		isPrivateParent:false,
 		isPrivateChild:false,
@@ -286,7 +288,8 @@
 					.attr('style', self._buildStyleOverride(node))
 					.attr('isPrivateChild',node.isPrivateChild)
 					.attr('isPrivateParent',node.isPrivateParent) //自定义鼠标右键
-					.attr('priId',node.priId);
+					.attr('priId',node.priId)
+					.attr('tagId',node.tagId);//判断鼠标左键
 
 				// Add indent/spacer to mimic tree structure
 				for (var i = 0; i < (level - 1); i++) {

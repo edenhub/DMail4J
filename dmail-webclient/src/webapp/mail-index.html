@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.useso.com/css?family=Tangerine">
     <script src="js/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <!--<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>-->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-treeview.js"></script>
     <script src="js/bootstrap-contextmenu.js"></script>
@@ -89,38 +89,79 @@
                             text: "SYSU",
                             icon: "glyphicon glyphicon-tag",
                             isPrivateChild: true,
-                            priId : 1
+                            priId: 1
                         },
                         {
-                            text:'Next',
+                            text: 'Next',
                             icon: "glyphicon glyphicon-tag",
                             isPrivateChild: true,
-                            priId : 2
+                            priId: 2
                         }
                     ];
 
                     $('#tree').treeview({data: buildTreeData(treeNode)});
                     $.ajax({
-                        url:'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/mailContents.html',
-                        cache:false,
-                        success:function(html){
+                        url: 'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/mailContents.html',
+                        cache: false,
+                        success: function (html) {
                             $('#mails_contents').html(html);
                         },
-                        error:function(){
+                        error: function () {
                             alert('error')
                         }
                     });
                     $('#tree').on('nodeSelected', function (event, node) {
-                        $.ajax({
-                            url:'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/mailContents.html',
-                            cache:false,
-                            success:function(html){
-                                $('#mails_contents').html(html);
-                            },
-                            error:function(){
-                                alert('error')
+                        switch (node.tagId) {
+                            case 1 :
+                            {
+                                $.ajax({
+                                    url: 'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/editPage.html',
+                                    cache: false,
+                                    success: function (html) {
+                                        $('#mails_contents').html(html);
+                                    },
+                                    error: function () {
+                                        alert('error')
+                                    }
+                                });
+
+                                break;
                             }
-                        });
+                            case 2 :
+                            {
+                                $.ajax({
+                                    url: 'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/mailContents.html',
+                                    cache: false,
+                                    success: function (html) {
+                                        $('#mails_contents').html(html);
+                                    },
+                                    error: function () {
+                                        alert('error')
+                                    }
+                                });
+                                break;
+                            }
+                            case 3 :
+                            {
+                                $('#mails_contents').html("已发送");
+                                break;
+                            }
+                            case 4:
+                            {
+                                $('#mails_contents').html('已删除');
+                                break;
+                            }
+                            case 5 :
+                            {
+                                $('#mails_contents').html('垃圾邮件');
+                                break;
+                            }
+                            default :
+                            {
+                                $('#mails_contents').html('其他')
+                            }
+                        }
+
                     });
                     $('#tree').bind('contextmenu', function (e) {
                         var oItem = $(e.target);
@@ -128,7 +169,7 @@
                             oItem.attr('data-toggle', 'context');
                             oItem.attr('data-target', '#context-menu-parent');
                         } else if (oItem.attr('isPrivateChild')) {
-//                            alert(oItem.attr('priId'));
+                            alert(oItem.attr('priId'));
 //                           var oInput =  $('#context-menu-child ul li:nth-child(1)');
 //                            oInput.on('click',{priId : oItem.attr('priId')},renameFold(e));
                             oItem.attr('data-toggle', 'context');
@@ -167,7 +208,8 @@
                     </div>
                     <div class="modal-body">
                         <p class="text-danger hidden">操作失败</p>
-                        <input id="createFold_newName" type="text" class="form-control" placeholder="文件名" required autofocus>
+                        <input id="createFold_newName" type="text" class="form-control" placeholder="文件名" required
+                               autofocus>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -190,7 +232,8 @@
                     </div>
                     <div class="modal-body">
                         <p class="text-danger hidden">操作失败</p>
-                        <input id="renameFold_newName" type="text" class="form-control" placeholder="文件名" required autofocus>
+                        <input id="renameFold_newName" type="text" class="form-control" placeholder="文件名" required
+                               autofocus>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -214,9 +257,9 @@
                     <div class="modal-body">
                         <p class="text-danger hidden">操作失败</p>
                     </div>
-                   <div>
-                       <p><span class="glyphicon glyphicon-remove-sign"></span> 将会删除文件夹下的所有邮件</p>
-                   </div>
+                    <div>
+                        <p><span class="glyphicon glyphicon-remove-sign"></span> 将会删除文件夹下的所有邮件</p>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                         <button type="submit" class="btn btn-primary" onclick="doDelete()">确定</button>

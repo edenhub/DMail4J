@@ -56,17 +56,20 @@ function buildTreeData(childList) {
     var defautlTree = [
         {
             text: '写信',
-            icon: 'glyphicon glyphicon-pencil'
+            icon: 'glyphicon glyphicon-pencil',
+            tagId:1
         },
         {
             text: "收信箱",
             icon: "glyphicon glyphicon-envelope",
             href: "1",
-            badge: 3
+            badge: 3,
+            tagId:2
         },
         {
             text: "已发送",
-            icon: "glyphicon glyphicon-share-alt"
+            icon: "glyphicon glyphicon-share-alt",
+            tagId:3
         },
         {
             text: "自定义文件夹",
@@ -76,11 +79,13 @@ function buildTreeData(childList) {
         },
         {
             text: "已删除",
-            icon: "glyphicon glyphicon-trash"
+            icon: "glyphicon glyphicon-trash",
+            tagId:4
         },
         {
             text: "垃圾邮件",
-            icon: "glyphicon glyphicon-ban-circle"
+            icon: "glyphicon glyphicon-ban-circle",
+            tagId:5
         }
     ];
 

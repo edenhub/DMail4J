@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <!--<link rel="stylesheet" href="css/bootstrap-theme.css"/>-->
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" href="css/summernote.css"/>
+    <script src="js/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#editZone').summernote({
+                height: 300,                 // set editor height
+
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null
+            });
+        });
+    </script>
+</head>
+<body>
+<div>
+    <form class="form-group">
+        <span>&nbsp;&nbsp;</span><button type="button" class="btn btn-success">发送</button>
+        <span>&nbsp;&nbsp;</span><button type="button" class="btn btn-default">取消</button>
+        <span>&nbsp;&nbsp;</span>
+    </form>
+</div>
+<div>
+    <form class="form-group">
+        <div>
+            <input type="email" class="form-control" placeholder="收件人邮箱" required autofocus=""/>
+        </div>
+        <br/>
+        <div>
+            <input type="text" class="form-control" placeholder="主题"/>
+        </div>
+        <br/>
+        <div>
+            <button type="button" class="btn btn-default" onclick="addFile()">添加附件</button>
+            <br>
+        </div>
+        <script>
+            var fileZoneId = 0;
+            function addFile(e){
+                fileZoneId += 1;
+                var fileZone = $('#file_zone');
+                var oFile = $('<input type="file" class="hidden" onchange="displayFile(this)"/>');
+                oFile.attr("id",'file_'+fileZoneId);
+                oFile.appendTo(fileZone);
+                oFile.click();
+            }
+
+            function displayFile(e){
+                var fileName = e.value.substring(e.value.lastIndexOf('\\')+1);
+                var fid = e.id;
+                var message = $('<div class="alert alert-warning alert-dismissible" role="alert"> <button id="btDelFile" onclick="delFile(this)" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> <strong>'+ fileName+'</strong> </div>&nbsp;');
+                message.attr("id",fid);
+                var fileZone = $('#file_zone');
+                message.appendTo(fileZone);
+                $('#btDelFile').attr('id',fid);
+            }
+
+            function delFile(e){
+                $('#'+e.id).remove();
+            }
+        </script>
+        <div id="file_zone" class="container-fluid">
+            <br/>
+        </div>
+    </form>
+</div>
+<hr>
+<div id="editZone"></div>
+<hr>
+</body>
+</html>
