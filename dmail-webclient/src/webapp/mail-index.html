@@ -78,6 +78,7 @@
     </div>
     <!--右键菜单栏结束-->
     <div class="tab-content">
+        <!--首页Tab开始-->
         <div class="tab-pane active" id="home">
             <div class="col-lg-2">
                 <!--<div class="btn btn-primary btn-lg btn-block">写信</div>-->
@@ -181,8 +182,18 @@
             <div id="mails_contents" class="col-lg-10">
                 <!--content-->
             </div>
+            <!--首页Tab开始-->
         </div>
-        <div class="tab-pane" id="contacts">通讯录</div>
+        <!--通讯录Tab开始-->
+        <div class="tab-pane" id="contacts">
+           <div class="col-lg-2">
+               <div id="tree_contract" class=".context"></div>
+               <script>
+                   $('#tree_contract').treeview({data: buildContractData()});
+               </script>
+           </div>
+        </div>
+        <!--通讯录Tab结束-->
     </div>
 
     <script>

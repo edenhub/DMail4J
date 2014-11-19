@@ -89,17 +89,21 @@ function buildTreeData(childList) {
         }
     ];
 
-    //len = childList.length;
-    //var tns = [len];
-    //
-    //
-    //for(i=0;i<len;i++){
-    //    node = getEmptyChildNode(childList[i].text,childList[i].priId);
-    //    tns.push(node);
-    //}
-
-    //alert("length : "+childList.length);
     defautlTree[3].nodes = childList;
-    //defautlTree[3].nodes = tns;
     return defautlTree;
+}
+
+function buildContractData(){
+    var contracts = [
+        {
+            text:"所有联系人",
+            icon:"glyphicon glyphicon-start"
+        },
+        {
+            text:'未分组联系人',
+            icon:"glyphicon glyphicon-start-empty"
+        }
+    ];
+
+    return contracts;
 }
