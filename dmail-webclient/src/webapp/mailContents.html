@@ -13,8 +13,20 @@
 <body class="container">
 <div>
     <form class="form-group">
-        <span>&nbsp;&nbsp;</span><input type="checkbox" id="allCheck">
-        <span>&nbsp;&nbsp;</span><button type="button" class="btn btn-default">删除</button>
+        <span>&nbsp;&nbsp;</span><input type="checkbox" id="allCheck" onclick="swapChangeOut()">
+        <span>&nbsp;&nbsp;</span>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" onclick="delMail(this)">删除</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="javascript:void(0);" onclick="selectAll()">全选</a></li>
+                <li><a href="javascript:void(0);" onclick="unSelectAll()">全不选</a></li>
+                <li><a href="javascript:void(0);" onclick="swapChange()">反选</a></li>
+            </ul>
+        </div>
         <span>&nbsp;&nbsp;</span><button type="button" class="btn btn-default">刷新</button>
         <span>&nbsp;&nbsp;</span>
         <div class="btn-group">
@@ -22,29 +34,88 @@
                 移动到 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="#">已删除</a></li>
-                <li><a href="#">垃圾邮件</a></li>
+                <li><a href="javascript:void(0);">已删除</a></li>
+                <li><a href="javascript:void(0);">垃圾邮件</a></li>
                 <li class="divider"></li>
-                <li><a href="#">SYSU</a></li>
-                <li><a href="#">Next</a></li>
+                <li><a href="javascript:void(0);">SYSU</a></li>
+                <li><a href="javascript:void(0);">Next</a></li>
             </ul>
         </div>
+        <!--<div class="col-lg-1" style="float: right">-->
+            <!--<select class="form-control">-->
+                <!--<option>1</option>-->
+                <!--<option>2</option>-->
+                <!--<option>3</option>-->
+                <!--<option>4</option>-->
+                <!--<option>5</option>-->
+            <!--</select>-->
+        <!--</div>-->
         <script>
-            function checkAll(listId){
-                $(listId).attr('checked','true');
+            function delMail(e){
+                alert('删除邮件');
             }
-            function unCheckAll(listId){
-                $(listId).removeAttr('checked');
+
+            function selectAll(){
+                var $oAllCheck = $('#allCheck');
+                $oAllCheck.get(0).checked = true;
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function(index,e){
+                    e.checked=true;
+                });
+
+                return false;
+            }
+
+            function unSelectAll(){
+                var $oAllCheck = $('#allCheck');
+                $oAllCheck.get(0).checked = false;
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function(index,e){
+                    e.checked=false;
+                });
+
+                return false;
+            }
+
+            function swapChangeOut(){
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function(index,e){
+                    swapState(e);
+                });
+
+                return false;
+            }
+
+            function swapChange(){
+                var $oAllCheck = $('#allCheck');
+                swapState($oAllCheck.get(0));
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function(index,e){
+                    swapState(e);
+                });
+
+                return false;
+            }
+
+            function swapState(oCheck){
+                if(oCheck.checked)
+                    oCheck.checked = false;
+                else
+                    oCheck.checked = true;
             }
 
             $('.dropdown-toggle').on('click',function(e){
                 $('.dropdown-toggle').dropdown();
             });
+
+            function checkMail(){
+                alert('check');
+            }
         </script>
     </form>
 </div>
 <table id="inBoxMailLists" class="table table-hover mailContents">
-    <tr id="1">
+    <tr id="1" onclick="checkMail()">
         <td class="select">
             <input name="del_mail" type="checkbox">
         </td>
@@ -175,10 +246,34 @@
 
 </table>
 <div>
+    <!--<nav>-->
+        <!--<ul class="pagination">-->
+            <!--<li class="disabled"><a href="javascript:void(0);">&laquo;</a></li>-->
+            <!--<li><a href="#">1</a></li>-->
+            <!--<li><a href="#">2</a></li>-->
+            <!--<li><a href="#">3</a></li>-->
+            <!--<li><a href="#">4</a></li>-->
+            <!--<li class="disabled"><a href="javascript:void(0);">...</a></li>-->
+            <!--<li><a href="#">&raquo;</a></li>-->
+        <!--</ul>-->
+    <!--</nav>-->
     <nav>
         <ul class="pager">
-            <li class="previous disabled"><a href="#">&larr;</a></li>
-            <li class="next"><a href="#">&rarr;</a></li>
+            <!--右边-->
+            <li class="previous"><a href="javascript:void(0);" style="float: right">&rarr;</a></li>
+            <li>
+                <div class="col-lg-1" style="float: right">
+                    <select class="form-control">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </li>
+            <!--左边-->
+            <li class="next disabled"><a href="#">&larr;</a></li>
         </ul>
     </nav>
 </div>

@@ -28,3 +28,11 @@ table .sender{
 table .title{
     width: 78%;
 }
+
+table .contracter{
+    width: 20%;
+}
+
+table .email{
+    width: 30%;
+}

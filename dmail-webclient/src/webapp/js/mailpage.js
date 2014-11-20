@@ -96,12 +96,14 @@ function buildTreeData(childList) {
 function buildContractData(){
     var contracts = [
         {
-            text:"所有联系人",
-            icon:"glyphicon glyphicon-start"
+            text:"已知联系人",
+            icon:"glyphicon glyphicon-star",
+            tagId:1
         },
         {
-            text:'未分组联系人',
-            icon:"glyphicon glyphicon-start-empty"
+            text:'未知联系人',
+            icon:"glyphicon glyphicon-star-empty",
+            tagId:2
         }
     ];
 

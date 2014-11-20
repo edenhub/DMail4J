@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="css/pagecontext.css"/>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <!--<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>-->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<div>
+    <form class="form-group">
+        <!--<span>&nbsp;&nbsp;</span><input type="checkbox" id="allCheck" onclick="swapChangeOut()">-->
+        <span>&nbsp;&nbsp;</span>
+        <button type="button" class="btn btn-success">新建联系人</button>
+        <!--<span>&nbsp;&nbsp;</span>-->
+        <!--<div class="btn-group">-->
+            <!--<button type="button" class="btn btn-default" onclick="delMail(this)">删除</button>-->
+            <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+                <!--<span class="caret"></span>-->
+                <!--<span class="sr-only">Toggle Dropdown</span>-->
+            <!--</button>-->
+            <!--<ul class="dropdown-menu" role="menu">-->
+                <!--<li><a href="javascript:void(0);" onclick="selectAll()">全选</a></li>-->
+                <!--<li><a href="javascript:void(0);" onclick="unSelectAll()">全不选</a></li>-->
+                <!--<li><a href="javascript:void(0);" onclick="swapChange()">反选</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <script>
+            function delMail(e) {
+                alert('删除联系人');
+            }
+
+            function selectAll() {
+                var $oAllCheck = $('#allCheck');
+                $oAllCheck.get(0).checked = true;
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function (index, e) {
+                    e.checked = true;
+                });
+
+                return false;
+            }
+
+            function unSelectAll() {
+                var $oAllCheck = $('#allCheck');
+                $oAllCheck.get(0).checked = false;
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function (index, e) {
+                    e.checked = false;
+                });
+
+                return false;
+            }
+
+            function swapChangeOut() {
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function (index, e) {
+                    swapState(e);
+                });
+
+                return false;
+            }
+
+            function swapChange() {
+                var $oAllCheck = $('#allCheck');
+                swapState($oAllCheck.get(0));
+                var $oSubCheck = $('.select input');
+                $oSubCheck.each(function (index, e) {
+                    swapState(e);
+                });
+
+                return false;
+            }
+
+            function swapState(oCheck) {
+                if (oCheck.checked)
+                    oCheck.checked = false;
+                else
+                    oCheck.checked = true;
+            }
+
+            $('.dropdown-toggle').on('click', function (e) {
+                $('.dropdown-toggle').dropdown();
+            });
+
+            function checkChangeContent(e){
+                alert('change')
+            }
+
+            $(document).ready(function(){
+                $('.contracter input').each(function(index,e){
+                    $(e).on('change',checkChangeContent);
+                });
+
+                $('.email input').each(function(index,e){
+                    $(e).on('change',checkChangeContent);
+                });
+
+                $('.note input').each(function(index,e){
+                    $(e).on('change',checkChangeContent);
+                });
+            });
+        </script>
+    </form>
+</div>
+
+<div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!--panel开始-->
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading_1">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
+                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_1">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-inline">
+                            <input type="text" class="form-control" value="Adam">
+                            <input type="email" class="form-control" value="cxd_dan@ymail.com">
+                        </div><br>
+                        <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
+                        <button type="button" class="btn btn-info">更新</button>
+                        <button type="button" class="btn btn-danger">删除</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--panel结束-->
+        <!--panel开始-->
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading_2">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_2" aria-expanded="true" aria-controls="collapse_2">
+                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_2">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-inline">
+                            <input type="text" class="form-control" value="Adam">
+                            <input type="email" class="form-control" value="cxd_dan@ymail.com">
+                        </div><br>
+                        <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
+                        <button type="button" class="btn btn-info">更新</button>
+                        <button type="button" class="btn btn-danger">删除</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--panel结束-->
+        <!--panel开始-->
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading_3">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_3" aria-expanded="true" aria-controls="collapse_3">
+                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_3">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-inline">
+                            <input type="text" class="form-control" value="Adam">
+                            <input type="email" class="form-control" value="cxd_dan@ymail.com">
+                        </div><br>
+                        <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
+                        <button type="button" class="btn btn-info">更新</button>
+                        <button type="button" class="btn btn-danger">删除</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--panel结束-->
+        <!--panel开始-->
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading_4">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_4" aria-expanded="true" aria-controls="collapse_4">
+                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_4">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-inline">
+                            <input type="text" class="form-control" value="Adam">
+                            <input type="email" class="form-control" value="cxd_dan@ymail.com">
+                        </div><br>
+                        <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
+                        <button type="button" class="btn btn-info">更新</button>
+                        <button type="button" class="btn btn-danger">删除</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--panel结束-->
+        <!--panel开始-->
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading_5">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_5" aria-expanded="true" aria-controls="collapse_5">
+                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_5">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-inline">
+                            <input type="text" class="form-control" value="Adam">
+                            <input type="email" class="form-control" value="cxd_dan@ymail.com">
+                        </div><br>
+                        <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
+                        <button type="button" class="btn btn-info">更新</button>
+                        <button type="button" class="btn btn-danger">删除</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--panel结束-->
+    </div>
+</div>
+
+
+
+<!--<table id="inBoxMailLists" class="table table-hover mailContents">-->
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<td class="select">-->
+            <!--<input type="checkbox" id="allCheck" onclick="swapChangeOut()">-->
+        <!--</td>-->
+        <!--<td class="contracter">昵称</td>-->
+        <!--<td class="email">邮箱</td>-->
+        <!--<td class="note">备注</td>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr id="1">-->
+        <!--<td class="select">-->
+            <!--<input name="del_mail" type="checkbox">-->
+        <!--</td>-->
+        <!--<td class="contracter"><input type="text" value="Adam" class="form-control"></td>-->
+        <!--<td class="email"><input type="text" value="cxd_dan@ymail.com" class="form-control"></td>-->
+        <!--<td class="note"><input type="text" class="form-control" placeholder="备注"></td>-->
+    <!--</tr>-->
+    <!--<tr id="2">-->
+        <!--<td class="select">-->
+            <!--<input name="del_mail" type="checkbox">-->
+        <!--</td>-->
+        <!--<td class="contracter"><input type="text" value="Adam" class="form-control"></td>-->
+        <!--<td class="email"><input type="text" value="cxd_dan@ymail.com" class="form-control"></td>-->
+        <!--<td class="note"><input type="text" class="form-control" placeholder="备注"></td>-->
+    <!--</tr>-->
+    <!--<tr id="3">-->
+        <!--<td class="select">-->
+            <!--<input name="del_mail" type="checkbox">-->
+        <!--</td>-->
+        <!--<td class="contracter"><input type="text" value="Adam" class="form-control"></td>-->
+        <!--<td class="email"><input type="text" value="cxd_dan@ymail.com" class="form-control"></td>-->
+        <!--<td class="note"><input type="text" class="form-control" placeholder="备注"></td>-->
+    <!--</tr>-->
+    <!--<tr id="4">-->
+        <!--<td class="select">-->
+            <!--<input name="del_mail" type="checkbox">-->
+        <!--</td>-->
+        <!--<td class="contracter"><input type="text" value="Adam" class="form-control"></td>-->
+        <!--<td class="email"><input type="text" value="cxd_dan@ymail.com" class="form-control"></td>-->
+        <!--<td class="note"><input type="text" class="form-control" placeholder="备注"></td>-->
+    <!--</tr>-->
+    <!--<tr id="5">-->
+        <!--<td class="select">-->
+            <!--<input name="del_mail" type="checkbox">-->
+        <!--</td>-->
+        <!--<td class="contracter"><input type="text" value="Adam" class="form-control"></td>-->
+        <!--<td class="email"><input type="text" value="cxd_dan@ymail.com" class="form-control"></td>-->
+        <!--<td class="note"><input type="text" class="form-control" placeholder="备注"></td>-->
+    <!--</tr>-->
+    <!--<tr id="6">-->
+        <!--<td class="select">-->
+            <!--<input name="del_mail" type="checkbox">-->
+        <!--</td>-->
+        <!--<td class="contracter"><input type="text" value="Adam" class="form-control"></td>-->
+        <!--<td class="email"><input type="text" value="cxd_dan@ymail.com" class="form-control"></td>-->
+        <!--<td class="note"><input type="text" class="form-control" placeholder="备注"></td>-->
+    <!--</tr>-->
+    <!--<tr id="7">-->
+        <!--<td class="select">-->
+            <!--<input name="del_mail" type="checkbox">-->
+        <!--</td>-->
+        <!--<td class="contracter"><input type="text" value="Adam" class="form-control"></td>-->
+        <!--<td class="email"><input type="text" value="cxd_dan@ymail.com" class="form-control"></td>-->
+        <!--<td class="note"><input type="text" class="form-control" placeholder="备注"></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+<!--</table>-->
+<div>
+    <nav>
+        <ul class="pager">
+            <!--右边-->
+            <li class="previous"><a href="javascript:void(0);" style="float: right">&rarr;</a></li>
+            <li>
+                <div class="col-lg-1" style="float: right">
+                    <select class="form-control">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </li>
+            <!--左边-->
+            <li class="next disabled"><a href="#">&larr;</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

@@ -190,8 +190,57 @@
                <div id="tree_contract" class=".context"></div>
                <script>
                    $('#tree_contract').treeview({data: buildContractData()});
+
+                   $.ajax({
+                       url: 'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/contracts-index.html',
+                       cache: false,
+                       success: function (html) {
+                           $('#contract_content').html(html);
+                       },
+                       error: function () {
+                           alert('error')
+                       }
+                   });
+
+                   $('#tree_contract').on('nodeSelected',function(event,node){
+                       var tagId = node.tagId;
+
+                       switch (tagId){
+                           case 1 : {
+                               $.ajax({
+                                   url: 'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/contracts-index.html',
+                                   cache: false,
+                                   success: function (html) {
+                                       $('#contract_content').html(html);
+                                   },
+                                   error: function () {
+                                       alert('error')
+                                   }
+                               });
+
+                               break;
+                           }
+                           case 2 : {
+                               $.ajax({
+                                   url: 'http://localhost:63342/DMail4J/dmail-webclient/src/webapp/contracts-index.html',
+                                   cache: false,
+                                   success: function (html) {
+                                       $('#contract_content').html(html);
+                                   },
+                                   error: function () {
+                                       alert('error')
+                                   }
+                               });
+
+                               break;
+                           }
+                       }
+                   });
                </script>
            </div>
+            <div class="col-lg-10" id="contract_content">
+
+            </div>
         </div>
         <!--通讯录Tab结束-->
     </div>

@@ -12,15 +12,18 @@
 
     <link rel="stylesheet" href="css/summernote.css"/>
     <script src="js/summernote.min.js"></script>
+    <script src="js/summernote-zh-CN.js"></script>
 
     <script>
         $(document).ready(function() {
             $('#editZone').summernote({
                 height: 300,                 // set editor height
+                lang: 'zh-CN',
 
                 minHeight: null,             // set minimum height of editor
                 maxHeight: null
             });
+            $('#editZone').code("<h1>欢迎使用YMail...</h1>");
         });
     </script>
 </head>
