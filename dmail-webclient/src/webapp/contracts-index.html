@@ -29,82 +29,82 @@
                 <!--<li><a href="javascript:void(0);" onclick="swapChange()">反选</a></li>-->
             <!--</ul>-->
         <!--</div>-->
-        <script>
-            function delMail(e) {
-                alert('删除联系人');
-            }
+        <!--<script>-->
+            <!--function delMail(e) {-->
+                <!--alert('删除联系人');-->
+            <!--}-->
 
-            function selectAll() {
-                var $oAllCheck = $('#allCheck');
-                $oAllCheck.get(0).checked = true;
-                var $oSubCheck = $('.select input');
-                $oSubCheck.each(function (index, e) {
-                    e.checked = true;
-                });
+            <!--function selectAll() {-->
+                <!--var $oAllCheck = $('#allCheck');-->
+                <!--$oAllCheck.get(0).checked = true;-->
+                <!--var $oSubCheck = $('.select input');-->
+                <!--$oSubCheck.each(function (index, e) {-->
+                    <!--e.checked = true;-->
+                <!--});-->
 
-                return false;
-            }
+                <!--return false;-->
+            <!--}-->
 
-            function unSelectAll() {
-                var $oAllCheck = $('#allCheck');
-                $oAllCheck.get(0).checked = false;
-                var $oSubCheck = $('.select input');
-                $oSubCheck.each(function (index, e) {
-                    e.checked = false;
-                });
+            <!--function unSelectAll() {-->
+                <!--var $oAllCheck = $('#allCheck');-->
+                <!--$oAllCheck.get(0).checked = false;-->
+                <!--var $oSubCheck = $('.select input');-->
+                <!--$oSubCheck.each(function (index, e) {-->
+                    <!--e.checked = false;-->
+                <!--});-->
 
-                return false;
-            }
+                <!--return false;-->
+            <!--}-->
 
-            function swapChangeOut() {
-                var $oSubCheck = $('.select input');
-                $oSubCheck.each(function (index, e) {
-                    swapState(e);
-                });
+            <!--function swapChangeOut() {-->
+                <!--var $oSubCheck = $('.select input');-->
+                <!--$oSubCheck.each(function (index, e) {-->
+                    <!--swapState(e);-->
+                <!--});-->
 
-                return false;
-            }
+                <!--return false;-->
+            <!--}-->
 
-            function swapChange() {
-                var $oAllCheck = $('#allCheck');
-                swapState($oAllCheck.get(0));
-                var $oSubCheck = $('.select input');
-                $oSubCheck.each(function (index, e) {
-                    swapState(e);
-                });
+            <!--function swapChange() {-->
+                <!--var $oAllCheck = $('#allCheck');-->
+                <!--swapState($oAllCheck.get(0));-->
+                <!--var $oSubCheck = $('.select input');-->
+                <!--$oSubCheck.each(function (index, e) {-->
+                    <!--swapState(e);-->
+                <!--});-->
 
-                return false;
-            }
+                <!--return false;-->
+            <!--}-->
 
-            function swapState(oCheck) {
-                if (oCheck.checked)
-                    oCheck.checked = false;
-                else
-                    oCheck.checked = true;
-            }
+            <!--function swapState(oCheck) {-->
+                <!--if (oCheck.checked)-->
+                    <!--oCheck.checked = false;-->
+                <!--else-->
+                    <!--oCheck.checked = true;-->
+            <!--}-->
 
-            $('.dropdown-toggle').on('click', function (e) {
-                $('.dropdown-toggle').dropdown();
-            });
+            <!--$('.dropdown-toggle').on('click', function (e) {-->
+                <!--$('.dropdown-toggle').dropdown();-->
+            <!--});-->
 
-            function checkChangeContent(e){
-                alert('change')
-            }
+            <!--function checkChangeContent(e){-->
+                <!--alert('change')-->
+            <!--}-->
 
-            $(document).ready(function(){
-                $('.contracter input').each(function(index,e){
-                    $(e).on('change',checkChangeContent);
-                });
+            <!--$(document).ready(function(){-->
+                <!--$('.contracter input').each(function(index,e){-->
+                    <!--$(e).on('change',checkChangeContent);-->
+                <!--});-->
 
-                $('.email input').each(function(index,e){
-                    $(e).on('change',checkChangeContent);
-                });
+                <!--$('.email input').each(function(index,e){-->
+                    <!--$(e).on('change',checkChangeContent);-->
+                <!--});-->
 
-                $('.note input').each(function(index,e){
-                    $(e).on('change',checkChangeContent);
-                });
-            });
-        </script>
+                <!--$('.note input').each(function(index,e){-->
+                    <!--$(e).on('change',checkChangeContent);-->
+                <!--});-->
+            <!--});-->
+        <!--</script>-->
     </form>
 </div>
 
@@ -114,10 +114,7 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="heading_1">
                 <h4 class="panel-title">
-                    <tr>
-                        <td class="contracter">Adam</td>
-                        <td class="email">adamchen@ymail.com</td>
-                    </tr>
+                    <span>adamchen.pub@ymail.com</span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
                         <span  class="caret pull-right"></span>
                     </a>
@@ -131,8 +128,8 @@
                             <input type="email" class="form-control" value="cxd_dan@ymail.com">
                         </div><br>
                         <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
-                        <button type="button" class="btn btn-info">更新</button>
-                        <button type="button" class="btn btn-danger">删除</button>
+                        <button type="button" class="btn btn-info pull-right">更新</button>
+                        <button type="button" class="btn btn-danger pull-right">删除</button>
                     </form>
                 </div>
             </div>
@@ -142,8 +139,9 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="heading_2">
                 <h4 class="panel-title">
+                    <span>adamchen.pub@ymail.com</span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse_2" aria-expanded="true" aria-controls="collapse_2">
-                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                        <span  class="caret pull-right"></span>
                     </a>
                 </h4>
             </div>
@@ -155,8 +153,8 @@
                             <input type="email" class="form-control" value="cxd_dan@ymail.com">
                         </div><br>
                         <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
-                        <button type="button" class="btn btn-info">更新</button>
-                        <button type="button" class="btn btn-danger">删除</button>
+                        <button type="button" class="btn btn-info pull-right">更新</button>
+                        <button type="button" class="btn btn-danger pull-right">删除</button>
                     </form>
                 </div>
             </div>
@@ -166,8 +164,9 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="heading_3">
                 <h4 class="panel-title">
+                    <span>adamchen.pub@ymail.com</span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse_3" aria-expanded="true" aria-controls="collapse_3">
-                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                        <span  class="caret pull-right"></span>
                     </a>
                 </h4>
             </div>
@@ -179,8 +178,8 @@
                             <input type="email" class="form-control" value="cxd_dan@ymail.com">
                         </div><br>
                         <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
-                        <button type="button" class="btn btn-info">更新</button>
-                        <button type="button" class="btn btn-danger">删除</button>
+                        <button type="button" class="btn btn-info pull-right">更新</button>
+                        <button type="button" class="btn btn-danger pull-right">删除</button>
                     </form>
                 </div>
             </div>
@@ -190,8 +189,9 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="heading_4">
                 <h4 class="panel-title">
+                    <span>adamchen.pub@ymail.com</span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse_4" aria-expanded="true" aria-controls="collapse_4">
-                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                        <span  class="caret pull-right"></span>
                     </a>
                 </h4>
             </div>
@@ -203,8 +203,8 @@
                             <input type="email" class="form-control" value="cxd_dan@ymail.com">
                         </div><br>
                         <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
-                        <button type="button" class="btn btn-info">更新</button>
-                        <button type="button" class="btn btn-danger">删除</button>
+                        <button type="button" class="btn btn-info pull-right">更新</button>
+                        <button type="button" class="btn btn-danger pull-right">删除</button>
                     </form>
                 </div>
             </div>
@@ -214,8 +214,9 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="heading_5">
                 <h4 class="panel-title">
+                    <span>adamchen.pub@ymail.com</span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse_5" aria-expanded="true" aria-controls="collapse_5">
-                        <span>Adam</span><span>cxd_dan@ymial.com</span>
+                        <span  class="caret pull-right"></span>
                     </a>
                 </h4>
             </div>
@@ -227,8 +228,8 @@
                             <input type="email" class="form-control" value="cxd_dan@ymail.com">
                         </div><br>
                         <input type="text" class="form-control" value="备注啦啦啦啦啦啦！！！！！！！"><br/>
-                        <button type="button" class="btn btn-info">更新</button>
-                        <button type="button" class="btn btn-danger">删除</button>
+                        <button type="button" class="btn btn-info pull-right">更新</button>
+                        <button type="button" class="btn btn-danger pull-right">删除</button>
                     </form>
                 </div>
             </div>
