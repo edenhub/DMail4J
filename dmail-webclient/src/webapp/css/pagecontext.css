@@ -29,10 +29,10 @@ table .title{
     width: 78%;
 }
 
-table .contracter{
+tr .contracter{
     width: 20%;
 }
 
-table .email{
+tr .email{
     width: 30%;
 }
