@@ -7,12 +7,11 @@
           <element id="module-output" name="dmail-webclient" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: junit:junit:4.10" />
-          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/dmail-webclient/target/MANIFEST.MF" />
+        <element id="file-copy" path="E:\develop\workspace\IntelljIdea\DMail4J\dmail-webclient\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="dmail-webclient/web/Web" />
     </root>

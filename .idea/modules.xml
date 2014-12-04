@@ -5,7 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/DMail4J.iml" filepath="$PROJECT_DIR$/DMail4J.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-desclient/dmail-desclient.iml" filepath="$PROJECT_DIR$/dmail-desclient/dmail-desclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-log/dmail-log.iml" filepath="$PROJECT_DIR$/dmail-log/dmail-log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmail-log/dmail-log.iml" filepath="$PROJECT_DIR$/dmail-log/dmail-log.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-webclient/dmail-webclient.iml" filepath="$PROJECT_DIR$/dmail-webclient/dmail-webclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DMail_DBUtil/dmial-dbutil.iml" filepath="$PROJECT_DIR$/DMail_DBUtil/dmial-dbutil.iml" />
       <module fileurl="file://$PROJECT_DIR$/DMail_DBUtil/dmial-dbutil.iml" filepath="$PROJECT_DIR$/DMail_DBUtil/dmial-dbutil.iml" />
     </modules>
   </component>
