@@ -10,7 +10,27 @@
     <modules>
         <module>dmail-webclient</module>
         <module>dmail-desclient</module>
+        <module>DMail_DBUtil</module>
+        <module>dmail-log</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.10</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+    </dependencies>
 
     <packaging>pom</packaging>
 
