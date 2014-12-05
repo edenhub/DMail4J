@@ -11,7 +11,7 @@
         <module>dmail-webclient</module>
         <module>dmail-desclient</module>
         <module>dmail-log</module>
-        <module>dmail-util</module>
+        <module>dmail-utils</module>
     </modules>
 
     <dependencyManagement>
