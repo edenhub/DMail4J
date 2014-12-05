@@ -10,8 +10,8 @@
     <modules>
         <module>dmail-webclient</module>
         <module>dmail-desclient</module>
-        <module>DMail_DBUtil</module>
         <module>dmail-log</module>
+        <module>dmail-util</module>
     </modules>
 
     <dependencyManagement>
@@ -38,12 +38,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.14</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

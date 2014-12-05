@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: dmail:dmail-util:dmail-log">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/dmail/dmail-util/dmail-log/dmail-util-dmail-log.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/dmail/dmail-util/dmail-log/dmail-util-dmail-log-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/dmail/dmail-util/dmail-log/dmail-util-dmail-log-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

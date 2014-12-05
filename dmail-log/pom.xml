@@ -11,5 +11,13 @@
 
     <artifactId>dmail-log</artifactId>
 
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>dmail</groupId>-->
+            <!--<artifactId>dmail-util</artifactId>-->
+            <!--<version>${project.version}</version>-->
+        <!--</dependency>-->
+    </dependencies>
+
 
 </project>
