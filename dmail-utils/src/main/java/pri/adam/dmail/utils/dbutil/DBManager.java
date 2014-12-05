@@ -87,4 +87,13 @@ public class DBManager {
     public Connection getConnection(){
         return connection;
     }
+
+    public void closeAutoCommit(){
+        assert connection!=null;
+        try {
+            connection.setAutoCommit(false);
+        } catch (SQLException e) {
+            logger.error("无法关闭自动提交",e);
+        }
+    }
 }
