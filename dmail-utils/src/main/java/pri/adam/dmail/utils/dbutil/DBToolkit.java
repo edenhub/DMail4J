@@ -1,9 +1,6 @@
 package pri.adam.dmail.utils.dbutil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Created by adam on 2014/12/5.
@@ -23,6 +20,11 @@ public class DBToolkit {
     public static void closePreparedStatment(PreparedStatement preparedStatement) throws SQLException {
         if (preparedStatement!=null)
             preparedStatement.close();
+    }
+
+    public static void closeResultSet(ResultSet resultSet) throws SQLException {
+        if (resultSet!=null)
+            resultSet.close();
     }
 
     public static boolean isConnectionClosed(Connection connection){

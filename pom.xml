@@ -12,6 +12,7 @@
         <module>dmail-desclient</module>
         <module>dmail-log</module>
         <module>dmail-utils</module>
+        <module>dmail-user</module>
     </modules>
 
     <dependencyManagement>
@@ -31,6 +32,12 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.4.4</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

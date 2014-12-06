@@ -15,6 +15,11 @@ public class OperateBean {
 //    操作结果：{1：成功，2：失败}
     private int result;
 
+    public OperateBean(String initiator,int level){
+        this.initiator = initiator;
+        this.f_level = level;
+    }
+
     public OperateBean(Date datetime,String initiator,int level){
         this.datetime = datetime;
         this.initiator = initiator;
@@ -39,6 +44,8 @@ public class OperateBean {
         this.f_level = level;
         this.result = result;
     }
+
+
 
     public Integer getId() {
         return id;
@@ -111,4 +118,41 @@ public class OperateBean {
                 ", result=" + result +
                 '}';
     }
+
+    public class OperateLevel{
+        public static final int SYSTEM=1;
+        public static final int USER=2;
+        public static final int TEST=3;
+    }
+
+    public class OperateResult{
+        public static final int SUCCESS=1;
+        public static final int FAIL=2;
+    }
+
+//    public enum OperateLevel{
+////        SYSTEM,USER,TEST
+//        SYSTEM(1),USER(2),TEST(3);
+//
+//        private OperateLevel(int l){
+//            this.level = l;
+//        }
+//
+//        private int level;
+//
+//        public int getLeve(){
+//            return level;
+//        }
+//    }
+//
+//    public enum OperateResult{
+//        SUCCESS(1),FAIL(2);
+//
+//        private OperateResult(int r){
+//            this.result = r;
+//        }
+//
+//        private int result;
+//    }
+
 }

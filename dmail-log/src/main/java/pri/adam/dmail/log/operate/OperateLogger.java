@@ -1,7 +1,8 @@
 package pri.adam.dmail.log.operate;
 
 import org.apache.log4j.Logger;
-import pri.adam.dmail.utils.dbutil.PreparedStatementTemplate;
+import pri.adam.dmail.utils.dbutil.DBToolkit;
+import pri.adam.dmail.utils.dbutil.StatementTemplate;
 
 import java.sql.*;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ public class OperateLogger implements OperateLogSql{
     private static OperateLogger operator = null;
     private static Connection connection = null;
     private static Logger logger = Logger.getLogger(OperateLogger.class);
+
     private OperateLogger(){};
 
     public static OperateLogger getInstance(Connection conn){
@@ -30,15 +32,15 @@ public class OperateLogger implements OperateLogSql{
     }
 
     public void addOperateLog(final OperateBean operateBean){
-        PreparedStatementTemplate template = new PreparedStatementTemplate(connection,addOperateLog);
-        template.executeSQL(template.new Executor() {
+        StatementTemplate template = new StatementTemplate(connection,addOperateLog);
+        template.executePreparedSQL(template.new PreparedExecutor() {
             @Override
             public Object execute(PreparedStatement preStatement, String exeSql) throws SQLException {
-                preStatement.setDate(1,operateBean.getDatetime());
-                preStatement.setString(2,operateBean.getInitiator());
-                preStatement.setString(3,operateBean.getF_describe());
-                preStatement.setInt(4,operateBean.getF_level());
-                preStatement.setInt(5,operateBean.getResult());
+                preStatement.setDate(1, operateBean.getDatetime());
+                preStatement.setString(2, operateBean.getInitiator());
+                preStatement.setString(3, operateBean.getF_describe());
+                preStatement.setInt(4, operateBean.getF_level());
+                preStatement.setInt(5, operateBean.getResult());
 
                 preStatement.execute();
                 return null;
@@ -47,21 +49,23 @@ public class OperateLogger implements OperateLogSql{
     }
 
     public Set<OperateBean> selectAllOperateLog(){
-        PreparedStatementTemplate<Set<OperateBean>> template =
-                new PreparedStatementTemplate<Set<OperateBean>>(connection,seeAllOperateLog);
+        StatementTemplate<Set<OperateBean>> template =
+                new StatementTemplate<Set<OperateBean>>(connection,seeAllOperateLog);
 
-        return template.executeSQL(template.new Executor() {
+        return template.executePreparedSQL(template.new PreparedExecutor() {
             @Override
             public Set<OperateBean> execute(PreparedStatement preStatment, String exeSql) throws SQLException {
                 ResultSet resultSet = preStatment.executeQuery();
                 Set<OperateBean> beans = new HashSet<OperateBean>();
 
-                if (resultSet.first()){
+                if (resultSet.first()) {
                     do {
                         OperateBean bean = reverseBean(resultSet);
                         beans.add(bean);
-                    }while (resultSet.next());
+                    } while (resultSet.next());
                 }
+
+                DBToolkit.closeResultSet(resultSet);
 
                 return beans;
             }
@@ -69,26 +73,27 @@ public class OperateLogger implements OperateLogSql{
     }
 
     public Set<OperateBean> selectRangeOperateLog(final int start,final int end){
-        PreparedStatementTemplate<Set<OperateBean>> template =
-                new PreparedStatementTemplate<Set<OperateBean>>(connection,seeAllOperateLog);
+        StatementTemplate<Set<OperateBean>> template =
+                new StatementTemplate<Set<OperateBean>>(connection,seeAllOperateLog);
 
-        return template.executeSQL(template.new Executor() {
+        return template.executePreparedSQL(template.new PreparedExecutor() {
             @Override
             public Set<OperateBean> execute(PreparedStatement preStatment, String exeSql) throws SQLException {
                 ResultSet resultSet = preStatment.executeQuery();
                 Set<OperateBean> beans = new HashSet<OperateBean>();
 
                 int index = 0;
-                if (resultSet.first()){
+                if (resultSet.first()) {
                     do {
                         index++;
-                        if (start<=index && index<=end){
+                        if (start <= index && index <= end) {
                             OperateBean bean = reverseBean(resultSet);
                             beans.add(bean);
                         }
-                    }while (resultSet.next());
+                    } while (resultSet.next());
                 }
 
+                DBToolkit.closeResultSet(resultSet);
                 return beans;
             }
         });
@@ -112,5 +117,6 @@ public class OperateLogger implements OperateLogSql{
         OperateBean bean = new OperateBean(id,date,initiator,describe,level,result);
         return bean;
     }
+
 
 }

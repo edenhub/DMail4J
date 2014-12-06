@@ -1,5 +1,6 @@
 package pri.adam.dmail.log.operate;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pri.adam.dmail.log.Version;
@@ -26,9 +27,21 @@ public class TestOperateLogger {
         operateLogger = OperateLogger.getInstance(dbManager.getConnection());
     }
 
+    @After
+    public void after(){
+        dbManager.disConn();
+    }
+
     @Test
     public void testAdd(){
         OperateBean operateBean = new OperateBean( Date.valueOf("2014-3-3"),"adam","test",1,1);
+        operateLogger.addOperateLog(operateBean);
+    }
+
+    @Test
+    public void testEnum(){
+        OperateBean operateBean = new OperateBean(Date.valueOf("2014-12-06"),"test","test",
+                OperateBean.OperateLevel.TEST,OperateBean.OperateResult.SUCCESS);
         operateLogger.addOperateLog(operateBean);
     }
 
