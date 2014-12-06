@@ -39,7 +39,7 @@ public class ContractAction implements ContractActionSql {
         StatementTemplate<Boolean> template =
                 new StatementTemplate<Boolean>(connection,addContractSql);
 
-        return template.executePreparedSQL(template.new PreparedExecutor() {
+        Object resO =  template.executePreparedSQL(template.new PreparedExecutor() {
             @Override
             public Boolean execute(PreparedStatement preStatment, String exeSql) throws SQLException {
                 preStatment.setString(1, contract.getMail());
@@ -50,6 +50,11 @@ public class ContractAction implements ContractActionSql {
                 return preStatment.execute();
             }
         });
+
+
+        if (resO == null)
+            return false;
+        return true;
     }
 
     public Contract getContractById(final int contractId){
@@ -105,12 +110,44 @@ public class ContractAction implements ContractActionSql {
         });
     }
 
-    public boolean updateContractById(final int contractId){
-        return false;
+    public boolean updateContractById(final int contractId,final Contract newContract){
+        StatementTemplate<Boolean> template =
+                new StatementTemplate<Boolean>(connection, updateContractSql);
+
+        Object resO =  template.executePreparedSQL(template.new PreparedExecutor() {
+            @Override
+            public Boolean execute(PreparedStatement preStatment, String exeSql) throws SQLException {
+                preStatment.setString(1,newContract.getMail());
+                preStatment.setString(2,newContract.getAlias());
+                preStatment.setString(3,newContract.getContent());
+                preStatment.setInt(4,contractId);
+
+                return preStatment.execute();
+            }
+        });
+
+        if (resO == null)
+            return false;
+        return true;
     }
 
     public boolean deleteContractById(final int contractId){
-        return false;
+        StatementTemplate<Boolean> template =
+                new StatementTemplate<Boolean>(connection,deleteContractByIdSql);
+
+        Object resO =  template.executePreparedSQL(template.new PreparedExecutor() {
+            @Override
+            public Boolean execute(PreparedStatement preStatment, String exeSql) throws SQLException {
+                preStatment.setInt(1,contractId);
+
+                return preStatment.execute();
+            }
+        });
+
+
+        if (resO == null)
+            return false;
+        return true;
     }
 
 

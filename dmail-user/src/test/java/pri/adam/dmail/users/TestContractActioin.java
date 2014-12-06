@@ -46,4 +46,19 @@ public class TestContractActioin {
         User4Proxy proxy = contractAction.findFriendByContractId(2);
         System.out.println(proxy);
     }
+
+    @Test
+    public void testUpdateContract(){
+        Contract contract = contractAction.getContractById(1);
+        contract.setMail("-------------------");
+        contract.setAlias("++++++++++++++++");
+
+        boolean result = contractAction.updateContractById(3,contract);
+        assert result == true;
+    }
+
+    @Test
+    public void testDeleteContract(){
+        assert contractAction.deleteContractById(2) == true;
+    }
 }

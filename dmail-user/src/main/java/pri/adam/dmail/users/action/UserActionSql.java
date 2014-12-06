@@ -16,4 +16,9 @@ public interface UserActionSql {
 
   static final String updateProxySql = "update user4proxy set pwdHash = \"{0}\" where username = \"{1}\"";
   static final String updateServerSql = "update users set pwdHash = \"{0}\" where username =\"{1}\"";
+
+  static final String getAllContractsSql = "select c.id,c.mail,c.alias,c.content from user4proxy as u,contracts as c where u.id = ? and c.tofriend = u.id ";
+
+  static final String deleteProxySql = "delete from user4proxy where username = \"{0}\"";
+  static final String deleteServerSql = "delete from users where username = \"{0}\"";
 }

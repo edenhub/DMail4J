@@ -9,8 +9,10 @@ import pri.adam.dmail.users.model.User4Server;
 import pri.adam.dmail.utils.dbutil.DBToolkit;
 import pri.adam.dmail.utils.dbutil.StatementTemplate;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.text.MessageFormat;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -208,15 +210,113 @@ public class UserAction implements UserActionSql {
     }
 
     public Set<Contract> getAllContracts(final int proxyId){
-        return null;
+        StatementTemplate<Set<Contract>> template =
+                new StatementTemplate<Set<Contract>>(connection,getAllContractsSql);
+
+        return template.executePreparedSQL(template.new PreparedExecutor() {
+            @Override
+            public Set<Contract> execute(PreparedStatement preStatment, String exeSql) throws SQLException {
+                preStatment.setInt(1,proxyId);
+
+                ResultSet resultSet = preStatment.executeQuery();
+
+                if (resultSet.first()){
+                    Set<Contract> contracts = new HashSet<Contract>();
+
+                    do{
+                        contracts.add(reverseToContract4Get(resultSet,proxyId));
+                    }while (resultSet.next());
+
+                    DBToolkit.closeResultSet(resultSet);
+                    return contracts;
+                }
+
+                DBToolkit.closeResultSet(resultSet);
+                return null;
+            }
+        });
     }
 
-    public Set<Contract> getRangeContracts(final int proxyId,int start,int end){
-        return null;
+    public Set<Contract> getRangeContracts(final int proxyId,final int start,final int end){
+        StatementTemplate<Set<Contract>> template =
+                new StatementTemplate<Set<Contract>>(connection,getAllContractsSql);
+
+        return template.executePreparedSQL(template.new PreparedExecutor() {
+            @Override
+            public Set<Contract> execute(PreparedStatement preStatment, String exeSql) throws SQLException {
+                preStatment.setInt(1,proxyId);
+
+                ResultSet resultSet = preStatment.executeQuery();
+
+                int index = 0;
+                if (resultSet.first()){
+                    Set<Contract> contracts = new HashSet<Contract>();
+
+                    do{
+                        index++;
+                        if (start<=index && index<= end){
+                            contracts.add(reverseToContract4Get(resultSet,proxyId));
+                        }
+                    }while (resultSet.next());
+
+                    DBToolkit.closeResultSet(resultSet);
+                    return contracts;
+                }
+
+                DBToolkit.closeResultSet(resultSet);
+                return null;
+            }
+        });
     }
 
-    public boolean deleteUser(final String username){
-        return false;
+    public boolean deleteUser(final String username,String initiator){
+        StatementTemplate<Boolean> template =
+                new StatementTemplate<Boolean>(connection);
+
+        Object resO = template.executeStmSQL(template.new StatmentExecutor() {
+            @Override
+            public Boolean execute(Statement stm) throws SQLException {
+                String proxySql = MessageFormat.format(deleteProxySql,username);
+                String serverSql = MessageFormat.format(deleteServerSql,username);
+
+                stm.addBatch(proxySql);
+                stm.addBatch(serverSql);
+
+                int res[] = stm.executeBatch();
+
+                return res.length == 2 ? true : false;
+            }
+        });
+
+        boolean result = (resO == null ? false : true);
+        operateBean.setDatetime(new Date(System.currentTimeMillis()));
+        operateBean.setInitiator(initiator);
+        if (result){
+            operateBean.setF_describe("删除用户成功");
+            operateBean.setResult(OperateBean.OperateResult.SUCCESS);
+        }
+        else{
+            operateBean.setF_describe("删除用户失败");
+            operateBean.setResult(OperateBean.OperateResult.FAIL);
+        }
+        operateLogger.addOperateLog(operateBean);
+
+        return result;
+    }
+
+    public boolean deleteUserBySYSTEM(final String username){
+        return deleteUser(username,SYSTEM_INITIATOR);
+    }
+
+    private Contract reverseToContract4Get(ResultSet resultSet,int tofriend) throws SQLException {
+        int id = resultSet.getInt(1);
+        String mail = resultSet.getString(2);
+        String alias = resultSet.getString(3);
+        String content = resultSet.getString(4);
+
+        Contract contract = new Contract(id,mail,alias,content,tofriend);
+
+        return contract;
     }
 
 }
