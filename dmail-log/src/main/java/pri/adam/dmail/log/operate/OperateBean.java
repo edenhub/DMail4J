@@ -119,13 +119,13 @@ public class OperateBean {
                 '}';
     }
 
-    public class OperateLevel{
+    public static class OperateLevel{
         public static final int SYSTEM=1;
         public static final int USER=2;
         public static final int TEST=3;
     }
 
-    public class OperateResult{
+    public static class OperateResult{
         public static final int SUCCESS=1;
         public static final int FAIL=2;
     }
