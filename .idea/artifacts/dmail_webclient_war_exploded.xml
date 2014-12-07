@@ -7,8 +7,6 @@
           <element id="module-output" name="dmail-webclient" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.4.4" />
-          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:18.0" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
         </element>

@@ -13,6 +13,7 @@
         <module>dmail-log</module>
         <module>dmail-utils</module>
         <module>dmail-user</module>
+        <module>dmail-core</module>
     </modules>
 
     <dependencyManagement>
@@ -28,16 +29,18 @@
                 <artifactId>log4j</artifactId>
                 <version>1.2.12</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>1.4.4</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>1.4.4</version>
-            <!--<scope>provided</scope>-->
-        </dependency>
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
