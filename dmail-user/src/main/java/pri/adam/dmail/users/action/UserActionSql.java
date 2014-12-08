@@ -9,6 +9,7 @@ public interface UserActionSql {
   static final String addServerSql = "insert into users(username,pwdHash,pwdAlgorithm) values (\"{0}\",\"{1}\",\"{2}\")";
 
   static final String isUserExitSql = "select username from users where username = ?";
+
   static final String isUserValidateSql = "select username,pwdHash from users where username = ? and pwdHash = ?";
 
   static final String getProxyByIdSql = "select * from user4proxy where id = ?";

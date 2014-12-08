@@ -1,5 +1,7 @@
 package pri.adam.dmail.core.BaseMail;
 
+import org.junit.Test;
+
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -19,10 +21,10 @@ import java.util.Properties;
 public class TestSendMail {
 
     public static void doSend() throws MessagingException {
-        String sender = "adam";
-        String pass = "adamchen";
+        String sender = "adam2";
+        String pass = "test";
         String smtpServer = "localhost";
-        String recipient = "adam@localhost";
+        String recipient = "adam3@localhost";
         String subject = "邮件测试主题";
         String fileAttachement = "";
         String content = "邮件测试内容";
@@ -39,6 +41,7 @@ public class TestSendMail {
         SmtpAuth smtpAuth = new SmtpAuth();
         smtpAuth.setUserInfo(sender,pass);
         Session session = Session.getInstance(proper,smtpAuth);
+        session.setDebug(true);
 
         MimeMessage sendMess = new MimeMessage(session);
         MimeBodyPart bodyPart = new MimeBodyPart();
@@ -64,5 +67,10 @@ public class TestSendMail {
         Transport.send(sendMess);
 
         System.out.println("发送成功");
+    }
+
+    @Test
+    public void test() throws MessagingException {
+        doSend();
     }
 }

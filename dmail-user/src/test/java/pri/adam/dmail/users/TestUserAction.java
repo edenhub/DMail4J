@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pri.adam.dmail.users.action.UserAction;
+import pri.adam.dmail.users.action.UserFromServerImpl.UserFromServerAction;
 import pri.adam.dmail.users.model.Contract;
 import pri.adam.dmail.users.model.User4Proxy;
 import pri.adam.dmail.utils.dbutil.DBManager;
@@ -26,6 +27,7 @@ public class TestUserAction {
     public void before(){
         assert dbManager.conn(inputStream) == true;
         userAction = UserAction.getInstance(dbManager.getConnection());
+//        userAction.setServerAction(new UserFromServerAction());
     }
 
     @After
@@ -36,9 +38,10 @@ public class TestUserAction {
     @Test
     public void testAddUser() throws NoSuchAlgorithmException {
         String pwd = DigestUtil.digestString("test","SHA");
-        User4Proxy proxy = new User4Proxy("adam3",pwd);
-
-        System.out.println(userAction.addUser(proxy));
+        User4Proxy proxy2 = new User4Proxy("adam2",pwd);
+        User4Proxy proxy3 = new User4Proxy("adam3",pwd);
+        System.out.println(userAction.addUser(proxy2));
+        System.out.println(userAction.addUser(proxy3));
     }
 
     @Test
@@ -68,7 +71,7 @@ public class TestUserAction {
 
     @Test
     public void testUpdatePwd() throws NoSuchAlgorithmException {
-        User4Proxy newProxy = new User4Proxy("adam",DigestUtil.digestString("adamchen","SHA"));
+        User4Proxy newProxy = new User4Proxy("adam3",DigestUtil.digestString("adamchen","SHA"));
         assert userAction.updatePwdHash(newProxy)==true;
         assert userAction.isUserValidated(newProxy)==true;
     }
@@ -89,7 +92,7 @@ public class TestUserAction {
 
     @Test
     public void testDeleteUser(){
-        String username = "adam";
+        String username = "adam3";
 
         assert userAction.deleteUserBySYSTEM(username) == true;
     }

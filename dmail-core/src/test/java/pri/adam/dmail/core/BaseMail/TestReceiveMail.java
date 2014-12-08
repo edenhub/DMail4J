@@ -1,5 +1,7 @@
 package pri.adam.dmail.core.BaseMail;
 
+import org.junit.Test;
+
 import javax.mail.*;
 import java.io.IOException;
 import java.util.Properties;
@@ -11,8 +13,8 @@ public class TestReceiveMail {
 
     public static void receiveMail() throws MessagingException, IOException {
         String host="localhost";
-        String user="adam";
-        String pass = "adamchen";
+        String user="adam3";
+        String pass = "test";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host","localhost");
@@ -22,6 +24,7 @@ public class TestReceiveMail {
         prop.put("mail.store.protocol","pop3");
 
         Session session = Session.getDefaultInstance(prop,null);
+//        session.setDebug(true);
 
         Store store = session.getStore("pop3");
         store.connect(host,user,pass);
@@ -38,5 +41,10 @@ public class TestReceiveMail {
 
         folder.close(false);
         store.close();
+    }
+
+    @Test
+    public void test() throws IOException, MessagingException {
+        receiveMail();
     }
 }

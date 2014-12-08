@@ -26,6 +26,8 @@ public class UserAction implements UserActionSql {
     private OperateBean  operateBean = new OperateBean(SYSTEM_INITIATOR, OperateBean.OperateLevel.SYSTEM);
     private static final String SYSTEM_INITIATOR = "SYSTEM";
 
+//    private UserFromServer serverAction;
+
     private UserAction(){}
 
     public static UserAction getInstance(Connection conn){
@@ -43,7 +45,16 @@ public class UserAction implements UserActionSql {
         return action;
     }
 
+//    public UserFromServer getServerAction() {
+//        return serverAction;
+//    }
+//
+//    public void setServerAction(UserFromServer serverAction) {
+//        this.serverAction = serverAction;
+//    }
+
     public boolean addUser(final User4Proxy proxy){
+//        assert serverAction!=null;
         StatementTemplate<Boolean> template =
                 new StatementTemplate<Boolean>(connection);
         Object resO = template.executeStmSQL(template.new StatmentExecutor() {
@@ -54,6 +65,11 @@ public class UserAction implements UserActionSql {
                 String serverSql = MessageFormat.format(addServerSql,server.toObjectArray());
 
                 stm.addBatch(proxySql);
+//                try {
+//                    serverAction.addServerUser(proxy, stm);
+//                } catch (Exception e) {
+//                    throw new SQLException("Server操作失误");
+//                }
                 stm.addBatch(serverSql);
 
                 int res[] = stm.executeBatch();
@@ -179,6 +195,7 @@ public class UserAction implements UserActionSql {
     }
 
     public boolean updatePwdHash(final String username,final String newPwdHash){
+//        assert serverAction!=null;
         StatementTemplate<Boolean> template =
                 new StatementTemplate<Boolean>(connection);
 
@@ -190,6 +207,11 @@ public class UserAction implements UserActionSql {
 
                 stm.addBatch(updateProxy);
                 stm.addBatch(updateServer);
+//                try {
+//                    serverAction.updateServerUser(username,newPwdHash);
+//                } catch (Exception e) {
+//                    throw new SQLException("Server错误");
+//                }
 
                 int res[] = stm.executeBatch();
 
@@ -270,6 +292,7 @@ public class UserAction implements UserActionSql {
     }
 
     public boolean deleteUser(final String username,String initiator){
+//        assert serverAction!=null;
         StatementTemplate<Boolean> template =
                 new StatementTemplate<Boolean>(connection);
 
@@ -281,7 +304,11 @@ public class UserAction implements UserActionSql {
 
                 stm.addBatch(proxySql);
                 stm.addBatch(serverSql);
-
+//                try {
+//                    serverAction.deleteServerUser(username,stm);
+//                } catch (Exception e) {
+//                    throw new SQLException("Server错误");
+//                }
                 int res[] = stm.executeBatch();
 
                 return res.length == 2 ? true : false;

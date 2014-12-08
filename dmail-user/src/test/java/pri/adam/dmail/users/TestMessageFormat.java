@@ -12,9 +12,9 @@ public class TestMessageFormat {
 
     @Test
     public void test01(){
-        String sql = UserActionSql.addProxySql;
-        String serverSql = UserActionSql.addServerSql;
-        System.out.println(MessageFormat.format(sql,new Object[]{"adam","aaa"}));
-        System.out.println(MessageFormat.format(serverSql,new Object[]{"adam","sss","SHA"}));
+//        String sql = UserActionSql.addProxySql;
+//        String serverSql = UserActionSql.addServerSql;
+//        System.out.println(MessageFormat.format(sql,new Object[]{"adam","aaa"}));
+//        System.out.println(MessageFormat.format(serverSql,new Object[]{"adam","sss","SHA"}));
     }
 }
