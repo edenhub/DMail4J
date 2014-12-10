@@ -18,7 +18,7 @@ import java.util.Properties;
 public class TestWork {
     public Properties proper = new Properties();
     public String smtpServer = "localhost";
-    public MyAuth myAuth = new MyAuth("adam3","test");
+    public MyAuth myAuth = new MyAuth("adam2","test");
 
     @Before
     public void before(){
@@ -82,5 +82,42 @@ public class TestWork {
         System.out.println(messages[0].getReceivedDate());
 
         folder.close(false);
+    }
+
+    @Test
+    public void testReadMessageType() throws Exception {
+        Session session = Session.getInstance(proper,myAuth);
+
+        Store store = session.getStore();
+        store.connect();;
+
+        Folder folder = store.getFolder("inbox");
+        folder.open(Folder.READ_WRITE);
+
+        Message[] messages = folder.getMessages();
+
+        System.out.println(messages.length);
+
+        for(int i=0;i<messages.length;i++){
+            System.out.println(messages[i].getContentType());
+            MimeMultipart mimeMultipart = (MimeMultipart) messages[i].getContent();
+            int bodyNum = mimeMultipart.getCount();
+            System.out.println("bodyNum : "+bodyNum);
+            System.out.println("=======================>>>");
+            for (int j=0;j<bodyNum;j++){
+                MimeBodyPart bodyPart = (MimeBodyPart) mimeMultipart.getBodyPart(j);
+                System.out.println(bodyPart.getContentType());
+                if (bodyPart.isMimeType("text/plain"))
+                    System.out.println("text : "+bodyPart.getContent().toString());
+                else{
+                    System.out.println("other : "+bodyPart.getContentID());
+                }
+            }
+            System.out.println("<<<=======================");
+
+        }
+
+        folder.close(false);
+
     }
 }
