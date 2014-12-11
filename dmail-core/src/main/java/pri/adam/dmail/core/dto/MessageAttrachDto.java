@@ -9,13 +9,16 @@ public class MessageAttrachDto {
     private String[] attrachNames;
     private String[] attrachFiles;
 
-    public MessageAttrachDto(){}
+    public MessageAttrachDto(){
+    }
 
     public MessageAttrachDto(String[] attrachNames,String[] attrachFiles){
         assert attrachNames.length == attrachFiles.length;
         this.attrachNames = attrachNames;
         this.attrachFiles = attrachFiles;
+
     }
+
 
     public String[] getAttrachNames() {
         return attrachNames;

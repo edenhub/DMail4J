@@ -6,7 +6,6 @@ import java.util.Arrays;
  * Created by adam on 2014/12/10.
  */
 public class MessageHtmlContentDto {
-
     private String[] contentIds;
     private String htmlBody;
     private String[] contentFiles;
