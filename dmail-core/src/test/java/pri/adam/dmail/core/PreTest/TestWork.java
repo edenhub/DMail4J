@@ -463,4 +463,24 @@ public class TestWork {
         System.out.println("===============================");
     }
 
+    /**
+     * pop3不支持多箱操作
+     * @throws MessagingException
+     */
+    @Test
+    public void testSended() throws MessagingException {
+        Session session = Session.getInstance(proper,myAuth);
+        POP3Store store = (POP3Store) session.getStore();
+        store.connect();;
+        POP3Folder folder = (POP3Folder) store.getFolder("inbox");
+        folder.open(Folder.READ_WRITE);
+
+        if (!folder.exists()){
+            folder.create(Folder.HOLDS_MESSAGES);
+        }
+
+        folder.open(Folder.READ_WRITE);
+
+        System.out.println(folder.exists());
+    }
 }
