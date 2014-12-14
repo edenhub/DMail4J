@@ -1,6 +1,5 @@
-package pri.adam.dmail.core.dto;
+package pri.adam.dmail.core.messageFactory.dto;
 
-import javax.mail.Authenticator;
 import java.util.Arrays;
 import java.util.Date;
 

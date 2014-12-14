@@ -1,4 +1,4 @@
-package pri.adam.dmail.core.readFactory.Model;
+package pri.adam.dmail.core.readFactory.model;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package pri.adam.dmail.core.readFactory.Model;
+package pri.adam.dmail.core.readFactory.model;
 
 /**
  * Created by adam on 2014/12/12.

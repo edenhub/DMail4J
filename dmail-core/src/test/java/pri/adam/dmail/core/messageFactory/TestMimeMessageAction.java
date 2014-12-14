@@ -3,18 +3,16 @@ package pri.adam.dmail.core.messageFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pri.adam.dmail.core.PreTest.MyAuth;
 import pri.adam.dmail.core.auth.SimpleAuth;
-import pri.adam.dmail.core.dto.MessageAttrachDto;
-import pri.adam.dmail.core.dto.MessageHtmlContentDto;
-import pri.adam.dmail.core.dto.MessageInfoDto;
-import pri.adam.dmail.core.dto.MessageTextContentDto;
+import pri.adam.dmail.core.messageFactory.dto.MessageAttrachDto;
+import pri.adam.dmail.core.messageFactory.dto.MessageHtmlContentDto;
+import pri.adam.dmail.core.messageFactory.dto.MessageInfoDto;
+import pri.adam.dmail.core.messageFactory.dto.MessageTextContentDto;
 
 import javax.mail.Authenticator;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
-import java.util.Date;
 import java.util.Properties;
 
 /**

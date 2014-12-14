@@ -1,4 +1,4 @@
-package pri.adam.dmail.core.dto;
+package pri.adam.dmail.core.messageFactory.dto;
 
 import java.util.Arrays;
 

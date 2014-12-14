@@ -1,0 +1,35 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="dmail-proxy:war exploded">
+    <output-path>$PROJECT_DIR$/dmail-proxy/target/dmail-proxy</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="dmail-proxy" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="dmail-core-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="dmail-core" />
+          </element>
+          <element id="archive" name="dmail-log-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="dmail-log" />
+          </element>
+          <element id="archive" name="dmail-utils-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="dmail-utils" />
+          </element>
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.4.4" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="archive" name="dmail-user-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="dmail-user" />
+          </element>
+          <element id="library" level="project" name="Maven: com.google.guava:guava:18.0" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="E:\develop\workspace\IntelljIdea\DMail4J\dmail-proxy\target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="dmail-proxy/web/Web" />
+    </root>
+  </artifact>
+</component>
