@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/dmail-core/src/test/java/pri/adam/dmail/core/BaseMail/SmtpAuth.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dmail-core/src/test/java/pri/adam/dmail/core/BaseMail/TestReceiveMail.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dmail-core/src/test/java/pri/adam/dmail/core/BaseMail/TestSendMail.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dmail-proxy" charset="UTF-8" />
   </component>
 </project>

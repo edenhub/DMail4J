@@ -25,6 +25,7 @@
         <module name="dmail-core" />
         <module name="dmail-desclient" />
         <module name="dmail-log" />
+        <module name="dmail-proxy" />
         <module name="dmail-user" />
         <module name="dmail-utils" />
         <module name="dmail-webclient" />
@@ -32,5 +33,8 @@
         <module name="dmial-dbutil" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dmail-proxy" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

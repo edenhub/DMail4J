@@ -4,6 +4,7 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/dmail-proxy" />
     <file type="web" url="file://$PROJECT_DIR$/dmail-webclient" />
   </component>
   <component name="IdProvider" IDEtalkID="B6D76611C08F94705D3605BE4675ACED" />

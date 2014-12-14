@@ -11,7 +11,6 @@ import java.util.List;
 public interface MailReader {
     public List<MailInfo> getMessagesByRange(int start,int end) throws MessagingException;
 
-
     public List<MailInfo> getSendedMessagesByRange(int start,int end);
 
     public List<MailInfo> getDeletedMessagesByRange(int start,int end);

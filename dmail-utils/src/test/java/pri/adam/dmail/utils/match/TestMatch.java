@@ -25,7 +25,7 @@ public class TestMatch {
 	private PageConf pageConf = PageConf.getInstance();
 
 	@Test
-	public void bestMailTest() {
+	public void baseMailTest() {
 		rultString = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\." +
 					 "[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|" +
 					 "[0-9]{1,3})(\\]?)$";
@@ -37,7 +37,7 @@ public class TestMatch {
 	}
 	
 	@Test
-	public void bestPhoneTest(){
+	public void basePhoneTest(){
 		rultString = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
 		Pattern pattern = Pattern.compile(rultString);
 		Matcher matcher = pattern.matcher("15876584571");
@@ -47,7 +47,7 @@ public class TestMatch {
 	}
 	
 	@Test
-	public void bestPassWordTest(){
+	public void basePassWordTest(){
 		//����ĸ��ͷ��������6~18֮�䣬ֻ�ܰ����ַ������ֺ��»���
 		rultString = "^[a-zA-Z]\\w{5,17}$";
 		Pattern pattern = Pattern.compile(rultString);
@@ -72,6 +72,13 @@ public class TestMatch {
 		ruleMatch.updateRule(confProperties.getProperty("rule.password"));
 		assertTrue(ruleMatch.isMatch("aaf__232__a"));
 		assertFalse(ruleMatch.isMatch("9999afadfadsfafa"));
+	}
+
+	@Test
+	public void testPageConf(){
+		ISingleRuleMatch ruleMatch = new RuleMatch();
+		ruleMatch.updateRule(pageConf.getRuleProperty("rule.mail"));
+		assertTrue(ruleMatch.isMatch("cxd_dan@126.com"));
 	}
 	
 	@Test 

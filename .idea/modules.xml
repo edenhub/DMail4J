@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/dmail-core/dmail-core.iml" filepath="$PROJECT_DIR$/dmail-core/dmail-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-desclient/dmail-desclient.iml" filepath="$PROJECT_DIR$/dmail-desclient/dmail-desclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-log/dmail-log.iml" filepath="$PROJECT_DIR$/dmail-log/dmail-log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dmail-proxy/dmail-proxy.iml" filepath="$PROJECT_DIR$/dmail-proxy/dmail-proxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-user/dmail-user.iml" filepath="$PROJECT_DIR$/dmail-user/dmail-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-utils/dmail-utils.iml" filepath="$PROJECT_DIR$/dmail-utils/dmail-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/dmail-webclient/dmail-webclient.iml" filepath="$PROJECT_DIR$/dmail-webclient/dmail-webclient.iml" />

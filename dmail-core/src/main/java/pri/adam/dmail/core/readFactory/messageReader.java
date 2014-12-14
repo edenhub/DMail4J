@@ -2,7 +2,6 @@ package pri.adam.dmail.core.readFactory;
 
 import pri.adam.dmail.core.readFactory.model.AttrachInfo;
 
-import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeBodyPart;
